@@ -15,4 +15,4 @@ window.addEventListener('resize', function(){
 });
 
 var distance = Math.min(200, window.innerWidth / 4);
-var geometry = new THREEE.Geometry
+var geometry = new THREEE.Geometry();
