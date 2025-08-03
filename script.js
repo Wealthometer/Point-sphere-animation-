@@ -1,11 +1,11 @@
-var scene = new THREE.Scene();
+let scene = new THREE.Scene();
 document.addEventListener('mousemove', onMouseMove, false);
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 
-var mouseX;
-var mouseY;
+let mouseX;
+let mouseY;
 
-var renderer = new THREE.WebGLRenderer();
+let renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 window.addEventListener('resize', function(){
@@ -14,5 +14,16 @@ window.addEventListener('resize', function(){
     renderer.setSize(window.innerWidth, this.window.innerHeight);
 });
 
-var distance = Math.min(200, window.innerWidth / 4);
-var geometry = new THREEE.Geometry();
+let distance = Math.min(200, window.innerWidth / 4);
+let geometry = new THREEE.Geometry();
+
+for(let i = 0; i < 1600; i++){
+    let vertex = new THRE.Vector3();
+
+    let theta = THREE.Math.randFloatSpread(360);
+    let phi = THREE.Math.randFloatSpread(360);
+
+    vertex.x = distance * Math.sin(theta) * Math.cos(phi);
+    vertex.y = distance * Math.sin(theta) * Math.cos(phi);
+    vertex.z = distance * Math.cos(theta);
+}
