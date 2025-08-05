@@ -47,4 +47,29 @@ let renderingParent = new THREE.Group();
 renderingParent.add(particles);
 
 let resizeContainer = new THREE.Group();
+resizeContainer.add(renderingParent);
+scene.add(resizeContainer);
 
+camera.position.z = 400;
+
+let animate = function () {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+};
+
+let myTween;
+function onMouseMove(event) {
+  if (myTween) myTween.kill();
+
+  mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+  mouseY = (event.clientY / window.innerHeight) * 2 + 1;
+  myTween = gsap.to(particles.rotation, {
+    duration: 0.1,
+    x: mouseY * -1,
+    y: mouseX * 1,
+  });
+}
+
+animate();
+
+let animProps = {scale : 1, }
